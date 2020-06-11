@@ -1,6 +1,6 @@
 const request = require('request')
 
-export default function callSendAPI(senderPSID, response) {
+module.exports = function callSendAPI(senderPSID, response) {
     let request_body = {
         "recipient": {
           "id": senderPSID

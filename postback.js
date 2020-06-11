@@ -1,6 +1,6 @@
 const callSendAPI = require('./sendAPI')
 
-export default function handlePostback(senderPSID, receivedPB) {
+module.exports = function handlePostback(senderPSID, receivedPB) {
     let response;
     let payload = receivedPB.payload
 
