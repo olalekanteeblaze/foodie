@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const handlePostback = require('./postback')
+const handleMessage = require('./message')
 
 app = express().use(bodyParser.json()); 
 require('dotenv').config()
