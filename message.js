@@ -9,12 +9,13 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
         "qs": {
             "query": message,
             "number": 1,
-            "apiKey": process.env.API_KEY
+            "apiKey": process.env.API_KEY,
+            "instructionsRequired": true
         },
         "method": "get"
     }, (err, res, body) => {
         if(!err){
-            console.log(res)
+            console.log(res.body)
         } else {
             console.error(err)
         }
