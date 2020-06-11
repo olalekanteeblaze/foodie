@@ -9,6 +9,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
         "qs": {
             "query": message,
             "number": 1,
+            "apiKey": process.env.API_KEY
         },
         "method": "get"
     }, (err, res, body) => {
