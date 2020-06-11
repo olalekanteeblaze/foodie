@@ -15,7 +15,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
         "method": "get"
     }, (err, res, body) => {
         if(!err){
-            console.log(res.body)
+            console.log(res.body[0])
         } else {
             console.error(err)
         }
