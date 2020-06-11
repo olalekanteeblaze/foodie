@@ -22,6 +22,14 @@ module.exports = function handlePostback(senderPSID, receivedPB) {
                 ]
             }
             break;
+        case 'NAME_OF_FOOD':
+            response = {
+                text: "Enter name of food"
+            }
+        case 'PICTURE':
+            response = {
+                text: "Take a picture or select from gallery"
+            }
         default:
             response = {
                 text: "I don't understand, are you hungry?"
