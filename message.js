@@ -29,6 +29,8 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
             },(err, res, body) => {
                 if(!err) { 
                     let extendedIngredients = 'These are the needed ingredients'
+                    ingredients = JSON.parse(res.body).extendedIngredients
+                    console.log(ingredients)
                     JSON.parse(res.body).extendedIngredients[0].forEach((ingredient) => {
                         extendedIngredients += `
                                                 ${ingredient.originalName}
