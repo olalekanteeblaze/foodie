@@ -15,7 +15,16 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
         "method": "get"
     }, (err, res, body) => {
         if(!err){
-            console.log(JSON.parse(res.body))
+            let id = JSON.parse(res.body).results[0].id
+            request({
+                "uri": `https://api.spoonacular.com/recipes/${id}/information`,
+                "qs": {
+                    "apiKey": process.env.API_KEY
+                },
+                "method": "get"
+            },(err, res, body) => {
+                console.log(res.body)
+            })
         } else {
             console.error(err)
         }
