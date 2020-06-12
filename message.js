@@ -4,6 +4,10 @@ const callSendAPI = require('./sendAPI')
 module.exports = function handleMessage(senderPSID, receivedMessage) {
     let response
     let message = receivedMessage.text
+    let processing = {
+        text: "Preparing your recipe..."
+    }
+    callSendAPI(senderPSID, processing)
     request({
         "uri": 'https://api.spoonacular.com/recipes/search',
         "qs": {
@@ -23,7 +27,9 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 },
                 "method": "get"
             },(err, res, body) => {
-                console.log(JSON.parse(res.body).instructions)
+                response = {
+                    text: JSON.parse(res.body).instructions
+                }
             })
         } else {
             console.error(err)
