@@ -30,6 +30,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 response = {
                     text: JSON.parse(res.body).instructions
                 }
+                callSendAPI(senderPSID, response)
             })
         } else {
             console.error(err)
