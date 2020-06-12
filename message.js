@@ -23,7 +23,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 },
                 "method": "get"
             },(err, res, body) => {
-                console.log(JSON.parse(res.body))
+                console.log(JSON.parse(res.body).instructions)
             })
         } else {
             console.error(err)
