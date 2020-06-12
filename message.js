@@ -27,6 +27,13 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 },
                 "method": "get"
             },(err, res, body) => {
+                let extendedIngredients = 'These are the needed ingredients'
+                JSON.parse(res.body).extendedIngredients[0].forEach((ingredient) => {
+                    extendedIngredients += `
+                                            ${ingredient.originalName}
+                                            `
+                })
+                callSendAPI(senderPSID, extendedIngredients)
                 response = {
                     text: JSON.parse(res.body).instructions
                 }
