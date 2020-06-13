@@ -7,6 +7,33 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
     let processing = {
         text: "Preparing your recipe..."
     }
+    const quickReply = {
+        text: "What would you like to do next?",
+        quick_replies: [
+            {
+                content_type: "text",
+                title: "Get another recipe",
+                payload: "NAME_OF_FOOD",
+            },
+            {
+                content_type: "text",
+                title: "Get a Random Recipe",
+                payload: "Random"
+            },
+            {
+                content_type: "type",
+                title: "Get a Random food fact",
+                payload: "Random"
+                
+            },
+            {
+                content_type: "type",
+                title: "Get a Random food joke",
+                payload: "Random"
+                
+            }
+        ]
+    }
     switch(message) {
         case 'Name of Food':
             callSendAPI(senderPSID, { text: 'What are you cooking?. Let me teach you how.'})
@@ -14,6 +41,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
         case 'Picture of Food':
             callSendAPI(senderPSID, { text: 'Send the picture, maybe i can help you...'})
         default:
+            callSendAPI(senderPSID, processing)
             request({
                 "uri": 'https://api.spoonacular.com/recipes/search',
                 "qs": {
@@ -60,37 +88,9 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                             const greeting = {
                                 text: "Enjoy your meal, hope to see you again"
                             }
-                            const quickReply = {
-                                text: "What would you like to do next?",
-                                quick_replies: [
-                                    {
-                                        content_type: "text",
-                                        title: "Get another recipe",
-                                        payload: "NAME_OF_FOOD",
-                                    },
-                                    {
-                                        content_type: "text",
-                                        title: "Get a Random Recipe",
-                                        payload: "Random"
-                                    },
-                                    {
-                                        content_type: "type",
-                                        title: "Get a Random food fact",
-                                        payload: "Random"
-                                        
-                                    },
-                                    {
-                                        content_type: "type",
-                                        title: "Get a Random food joke",
-                                        payload: "Random"
-                                        
-                                    }
-                                ]
-                            }
                             callSendAPI(senderPSID, response)
                             callSendAPI(senderPSID, image)
                             callSendAPI(senderPSID, greeting)
-                            callSendAPI(senderPSID, quickReply)
                             } else {
                                 console.error(err)
                             }
@@ -98,6 +98,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 } else {
                     console.error(err)
                 }
+                callSendAPI(senderPSID, quickReply)
             })
     }
 }
