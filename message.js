@@ -12,23 +12,23 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
         quick_replies: [
             {
                 content_type: "text",
-                title: "Get another recipe",
+                title: "another recipe",
                 payload: "NAME_OF_FOOD",
             },
             {
                 content_type: "text",
-                title: "Get a Random Recipe",
+                title: "Random Recipe",
                 payload: "Random_recipe"
             },
             {
                 content_type: "type",
-                title: "Get a Random food fact",
+                title: "Random food fact",
                 payload: "Random_fact"
                 
             },
             {
                 content_type: "type",
-                title: "Get a Random food joke",
+                title: "Random food joke",
                 payload: "Random_joke"
                 
             }

@@ -5,6 +5,7 @@ module.exports = function callSendAPI(senderPSID, response) {
         "recipient": {
           "id": senderPSID
         },
+        "messaging_type": "RESPONSE",
         "message": response
       }
     
