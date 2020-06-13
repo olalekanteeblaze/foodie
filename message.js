@@ -40,6 +40,8 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                     callSendAPI(senderPSID, ingredientText)
                     response = {
                         text: JSON.parse(res.body).instructions,
+                    }
+                    const image = {
                         attachment: {
                             type: "image",
                             payload: {
@@ -49,6 +51,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                         }
                     }
                     callSendAPI(senderPSID, response)
+                    callSendAPI(senderPSID, image)
                     } else {
                         console.error(err)
                     }
