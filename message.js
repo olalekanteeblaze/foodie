@@ -21,13 +21,13 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 payload: "Random_recipe"
             },
             {
-                content_type: "type",
+                content_type: "text",
                 title: "Random food fact",
                 payload: "Random_fact"
                 
             },
             {
-                content_type: "type",
+                content_type: "text",
                 title: "Random food joke",
                 payload: "Random_joke"
                 
