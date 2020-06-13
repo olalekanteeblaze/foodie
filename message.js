@@ -90,7 +90,6 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                             callSendAPI(senderPSID, response)
                             callSendAPI(senderPSID, image)
                             setTimeout( () => callSendAPI(senderPSID, greeting), 3000)
-                            callSendAPI(senderPSID, quickReply)
                             } else {
                                 console.error(err)
                             }
@@ -98,7 +97,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 } else {
                     console.error(err)
                 }
-                // setTimeout(() => callSendAPI(senderPSID, quickReply), 5000)
+                setTimeout(() => callSendAPI(senderPSID, quickReply), 10000)
             })
     }
 }
