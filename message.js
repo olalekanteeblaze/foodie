@@ -7,7 +7,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
     let processing = {
         text: "Preparing your recipe..."
     }
-    if(message != 'Enter name of food' || 'Take a picture or select from gallery') {
+    if(!receivedMessage.quick_reply) {
         callSendAPI(senderPSID, processing)
         request({
             "uri": 'https://api.spoonacular.com/recipes/search',
@@ -33,7 +33,8 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                         const ingredients = JSON.parse(res.body).extendedIngredients
                         console.log(ingredients)
                         ingredients.forEach((ingredient) => {
-                            extendedIngredients += `${ingredient.originalName}`
+                            extendedIngredients += `${ingredient.original}
+                            `
                         })
                         ingredientText = {
                             text: extendedIngredients
@@ -54,9 +55,37 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                         const greeting = {
                             text: "Enjoy your meal, hope to see you again"
                         }
+                        quickReply = {
+                            text: "What would you like to do next?",
+                            quick_replies: [
+                                {
+                                    content_type: "text",
+                                    title: "Get another recipe",
+                                    payload: "NAME_OF_FOOD",
+                                },
+                                {
+                                    content_type: "text",
+                                    title: "Get a Random Recipe",
+                                    payload: "Random"
+                                },
+                                {
+                                    content_type: "type",
+                                    title: "Get a Random food fact",
+                                    payload: "Random"
+                                    
+                                },
+                                {
+                                    content_type: "type",
+                                    title: "Get a Random food joke",
+                                    payload: "Random"
+                                    
+                                }
+                            ]
+                        }
                         callSendAPI(senderPSID, response)
                         callSendAPI(senderPSID, image)
                         callSendAPI(senderPSID, greeting)
+                        callSendAPI(senderPSID, quickReply)
                         } else {
                             console.error(err)
                         }
