@@ -41,7 +41,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
         case 'Picture of Food':
             callSendAPI(senderPSID, { text: 'Send the picture, maybe i can help you...'})
         default:
-            // callSendAPI(senderPSID, processing)
+            callSendAPI(senderPSID, processing)
             request({
                 "uri": 'https://api.spoonacular.com/recipes/search',
                 "qs": {
@@ -71,7 +71,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                             const ingredientText = {
                                 text: extendedIngredients
                             }
-                            // callSendAPI(senderPSID, ingredientText)
+                            callSendAPI(senderPSID, ingredientText)
                             response = {
                                 text: JSON.parse(res.body).instructions,
                             }
@@ -87,9 +87,9 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                             const greeting = {
                                 text: "Enjoy your meal, hope to see you again"
                             }
-                            // callSendAPI(senderPSID, response)
-                            // callSendAPI(senderPSID, image)
-                            // setTimeout( () => callSendAPI(senderPSID, greeting), 3000)
+                            callSendAPI(senderPSID, response)
+                            callSendAPI(senderPSID, image)
+                            setTimeout( () => callSendAPI(senderPSID, greeting), 3000)
                             callSendAPI(senderPSID, quickReply)
                             } else {
                                 console.error(err)
