@@ -72,7 +72,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                             ingredientText = {
                                 text: extendedIngredients
                             }
-                            callSendAPI(senderPSID, ingredientText)
+                            // callSendAPI(senderPSID, ingredientText)
                             response = {
                                 text: JSON.parse(res.body).instructions,
                             }
@@ -88,9 +88,10 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                             const greeting = {
                                 text: "Enjoy your meal, hope to see you again"
                             }
-                            callSendAPI(senderPSID, response)
-                            callSendAPI(senderPSID, image)
-                            setTimeout( () => callSendAPI(senderPSID, greeting), 3000)
+                            // callSendAPI(senderPSID, response)
+                            // callSendAPI(senderPSID, image)
+                            // setTimeout( () => callSendAPI(senderPSID, greeting), 3000)
+                            callSendAPI(senderPSID, quickReply)
                             } else {
                                 console.error(err)
                             }
@@ -98,7 +99,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 } else {
                     console.error(err)
                 }
-                setTimeout(() => callSendAPI(senderPSID, quickReply), 5000)
+                // setTimeout(() => callSendAPI(senderPSID, quickReply), 5000)
             })
     }
 }
