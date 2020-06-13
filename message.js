@@ -32,16 +32,21 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                     const ingredients = JSON.parse(res.body).extendedIngredients
                     console.log(ingredients)
                     ingredients.forEach((ingredient) => {
-                        extendedIngredients += `
-                                                ${ingredient.originalName}
-                                                `
+                        extendedIngredients += `${ingredient.originalName}`
                     })
                     ingredientText = {
                         text: extendedIngredients
                     }
                     callSendAPI(senderPSID, ingredientText)
                     response = {
-                        text: JSON.parse(res.body).instructions
+                        text: JSON.parse(res.body).instructions,
+                        attachment: {
+                            type: "image",
+                            payload: {
+                                url: JSON.parse(res.body).image,
+                                is_reusable: true
+                            }
+                        }
                     }
                     callSendAPI(senderPSID, response)
                     } else {
