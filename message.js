@@ -36,7 +36,10 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                                                 ${ingredient.originalName}
                                                 `
                     })
-                    callSendAPI(senderPSID, extendedIngredients)
+                    ingredientText = {
+                        text: extendedIngredients
+                    }
+                    callSendAPI(senderPSID, ingredientText)
                     response = {
                         text: JSON.parse(res.body).instructions
                     }
