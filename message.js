@@ -18,18 +18,18 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
             {
                 content_type: "text",
                 title: "Get a Random Recipe",
-                payload: "Random"
+                payload: "Random_recipe"
             },
             {
                 content_type: "type",
                 title: "Get a Random food fact",
-                payload: "Random"
+                payload: "Random_fact"
                 
             },
             {
                 content_type: "type",
                 title: "Get a Random food joke",
-                payload: "Random"
+                payload: "Random_joke"
                 
             }
         ]
