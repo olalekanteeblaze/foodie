@@ -60,7 +60,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                             const greeting = {
                                 text: "Enjoy your meal, hope to see you again"
                             }
-                            quickReply = {
+                            const quickReply = {
                                 text: "What would you like to do next?",
                                 quick_replies: [
                                     {
