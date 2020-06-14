@@ -41,6 +41,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
             break;
         case 'Picture of Food':
             callSendAPI(senderPSID, { text: 'Send the picture, maybe i can help you...'})
+            break;
         default:
             callSendAPI(senderPSID, processing)
             request({
