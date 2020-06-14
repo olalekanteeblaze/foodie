@@ -103,7 +103,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 setTimeout(() => callSendAPI(senderPSID, quickReply), 10000)
             })
     }
-    if(attachment.type === 'image') {
-        console.log(attachment.payload.url)
-    }
+    // if(attachment && attachment.type === 'image') {
+    //     console.log(attachment.payload.url)
+    // }
 }
