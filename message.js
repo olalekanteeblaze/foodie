@@ -4,6 +4,7 @@ const callSendAPI = require('./sendAPI')
 module.exports = function handleMessage(senderPSID, receivedMessage) {
     let response
     let message = receivedMessage.text
+    let attachment = receivedMessage.attachments[0]
     let processing = {
         text: "Preparing your recipe..."
     }
@@ -99,5 +100,8 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 }
                 setTimeout(() => callSendAPI(senderPSID, quickReply), 10000)
             })
+    }
+    if(attachment.type === 'image') {
+        console.log(attachment.payload.url)
     }
 }
