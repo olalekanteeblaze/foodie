@@ -35,6 +35,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
             }
         ]
     }
+    console.log(message)
     switch(message) {
         case 'Name of Food':
             callSendAPI(senderPSID, { text: 'What are you cooking?. Let me teach you how.'})
