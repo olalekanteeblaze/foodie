@@ -103,5 +103,5 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 setTimeout(() => callSendAPI(senderPSID, quickReply), 10000)
             })
     }
-        console.log(attachment.payload.url)
+        console.log(attachment)
 }
