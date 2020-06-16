@@ -116,7 +116,6 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 "method": "get"
             }, (err, res, body) => {
                 if(!err) {
-                    console.log(JSON.parse(res.body))
                     const category = JSON.parse(res.body).category
                     const prob = parseInt(JSON.parse(res.body).probability * 100)
                     const message = {
@@ -134,6 +133,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                         "method": "get"
                     }, (err, res, body) => {
                         if(!err){
+                            console.log(JSON.parse(res.body))
                             let id = JSON.parse(res.body).results[0].id
                             request({
                                 "uri": `https://api.spoonacular.com/recipes/${id}/information`,
