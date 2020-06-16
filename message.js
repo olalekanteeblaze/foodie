@@ -106,7 +106,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
         if(attachment) {
             const imageUrl = attachment.payload.url
             request({
-                "uri": "https://api.spoonacular.com/food/images/classify",
+                "uri": "https://api.spoonacular.com/food/images/analyze",
                 "qs": {
                     "imageUrl" : imageUrl,
                     "apiKey": process.env.API_KEY
