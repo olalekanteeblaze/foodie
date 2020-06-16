@@ -116,7 +116,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 "method": "get"
             }, (err, res, body) => {
                 if(!err) {
-                    const category = JSON.parse(res.body).category
+                    const category = JSON.parse(res.body).category.replace("_", " ")
                     const prob = parseInt(JSON.parse(res.body).probability * 100)
                     const message = {
                         text: `I'm ${prob}% sure this food belong to the ${category} category. Preparing your recipe....`
