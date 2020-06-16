@@ -103,5 +103,21 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 setTimeout(() => callSendAPI(senderPSID, quickReply), 10000)
             })
     }
-        console.log(attachment)
+        if(attachment) {
+            const imageUrl = attachment.payload.url
+            request({
+                "uri": "https://api.spoonacular.com/food/images/classify",
+                "qs": {
+                    "imageUrl" : imageUrl,
+                    "apiKey": process.env.API_KEY
+                },
+                "method": "get"
+            }, (err, res, body) => {
+                if(!err) {
+                    console.log(res)
+                } else {
+                    console.log("error occured parsing image")
+                }
+            })
+        }
 }
