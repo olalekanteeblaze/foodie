@@ -32,21 +32,20 @@ app.post('/webhook', (req, res) => {
       body.entry.forEach(function(entry) {
         let webhook_event = entry.messaging[0];
         senderPSID.id = webhook_event.sender.id;
-        request({
-          "uri": `https://graph.facebook.com/${senderPSID.id}`,
-          "qs": {
-            "fields": "first_name",
-            "access_token": process.env.ACCESS_TOKEN
-          },
-          "method": "get"
-        }, (err, res, body) => {
-          senderName = JSON.parse(res.body).first_name
-        })()
-        console.log(senderName)
         if (webhook_event.message) {
-        console.log(senderPSID)
+          request({
+            "uri": `https://graph.facebook.com/${senderPSID.id}`,
+            "qs": {
+              "fields": "first_name",
+              "access_token": process.env.ACCESS_TOKEN
+            },
+            "method": "get"
+          }, (err, res, body) => {
+            senderPSID.firstName = JSON.parse(res.body).first_name
+          })
         handleMessage(senderPSID, webhook_event.message);        
         } else if (webhook_event.postback) {
+        
         console.log(senderPSID)
         handlePostback(senderPSID, webhook_event.postback);
         } 
