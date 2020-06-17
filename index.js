@@ -30,7 +30,7 @@ app.post('/webhook', (req, res) => {
     if (body.object === 'page') {
       body.entry.forEach(function(entry) {
         let webhook_event = entry.messaging[0];
-        senderPSID.id = webhook_event.sender;
+        senderPSID.id = webhook_event.sender.id;
         request({
           "uri": `https://graph.facebook.com/${senderPSID.id}`,
           "qs": {
