@@ -34,7 +34,8 @@ app.post('/webhook', (req, res) => {
         request({
           "uri": `https://graph.facebook.com/${senderPSID.id}`,
           "qs": {
-            "fields": "first_name"
+            "fields": "first_name",
+            "access_token": process.env.ACCESS_TOKEN
           },
           "method": "get"
         }, (err, res, body) => {
