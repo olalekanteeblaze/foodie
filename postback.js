@@ -39,5 +39,5 @@ module.exports = function handlePostback(senderPSID, receivedPB) {
                 text: "I don't understand, are you hungry?"
             }
     }
-    setTimeout(callSendAPI(senderPSID, response), 2000)
+    setTimeout( () => callSendAPI(senderPSID, response), 2000)
 }
