@@ -74,7 +74,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                     if(!err) { 
                         console.log(res.body)
                         let extendedIngredients = 'These are the needed ingredients'
-                        const ingredients = JSON.parse(res.body).extendedIngredients
+                        const ingredients = JSON.parse(res.body).recipes[0].extendedIngredients
                         ingredients.forEach((ingredient) => {
                             extendedIngredients += `${ingredient.original}
                             `
@@ -84,7 +84,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                         }
                         callSendAPI(senderPSID, ingredientText)
                         response = {
-                            text: JSON.parse(res.body).instructions,
+                            text: JSON.parse(res.body).recipes[0].instructions,
                         }
                         const image = {
                             attachment: {
