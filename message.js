@@ -113,7 +113,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                     "qs": {
                         "apiKey": process.env.API_KEY,
                     }
-                },(req, res, body) => {
+                },(err, res, body) => {
                     if(!err) {
                         const fact = { text : JSON.parse(res.body).text }
                         callSendAPI(senderPSID, fact)
