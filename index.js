@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const request = require('request');
 const handlePostback = require('./postback')
 const handleMessage = require('./message')
 
@@ -25,10 +26,21 @@ app.get('/webhook', (req, res) => {
 
 app.post('/webhook', (req, res) => {
     let body = req.body;
+    let senderName;
     if (body.object === 'page') {
       body.entry.forEach(function(entry) {
         let webhook_event = entry.messaging[0];
         let senderPSID = webhook_event.sender;
+        request({
+          "uri": `https://graph.facebook.com/${senderPSID.id}`,
+          "qs": {
+            "fields": "first_name"
+          },
+          "method": "get"
+        }, (err, res, body) => {
+          console.log(res.body)
+          senderPSID.firstName = JSON.parse(res.body).first_name
+        })
         if (webhook_event.message) {
         handleMessage(senderPSID, webhook_event.message);        
         } else if (webhook_event.postback) {
