@@ -40,6 +40,7 @@ app.post('/webhook', (req, res) => {
           "method": "get"
         }, (err, res, body) => {
           senderPSID.firstName = JSON.parse(res.body).first_name
+          console.log(senderPSID)
         })
         if (webhook_event.message) {
         handleMessage(senderPSID, webhook_event.message);        
