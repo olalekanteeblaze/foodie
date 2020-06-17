@@ -44,6 +44,101 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
             case 'Picture of Food':
                 callSendAPI(senderPSID, { text: 'Send the picture, maybe i can help you...'})
                 break;
+            case 'another recipe':
+                const response = {
+                    text: "Get recipe using:",
+                    quick_replies: [
+                        {
+                            content_type: "text",
+                            title: "Name of Food",
+                            payload: "NAME_OF_FOOD",
+                        },
+                        {
+                            content_type: "text",
+                            title: "Picture of Food",
+                            payload: "PICTURE",
+                        }
+                    ]
+                }
+                callSendAPI(senderPSID, response)
+                break;
+            case 'Random Recipe':
+                request({
+                    "uri": `https://api.spoonacular.com/recipes/random`,
+                    "qs": {
+                        "apiKey": process.env.API_KEY,
+                        "number": 1
+                    },
+                    "method": "get"
+                },(err, res, body) => {
+                    if(!err) { 
+                        let extendedIngredients = 'These are the needed ingredients'
+                        const ingredients = JSON.parse(res.body).extendedIngredients
+                        ingredients.forEach((ingredient) => {
+                            extendedIngredients += `${ingredient.original}
+                            `
+                        })
+                        const ingredientText = {
+                            text: extendedIngredients
+                        }
+                        callSendAPI(senderPSID, ingredientText)
+                        response = {
+                            text: JSON.parse(res.body).instructions,
+                        }
+                        const image = {
+                            attachment: {
+                                type: "image",
+                                payload: {
+                                    url: JSON.parse(res.body).image,
+                                    is_reusable: true
+                                }
+                            }
+                        }
+                        const greeting = {
+                            text: "Enjoy your meal, hope to see you again"
+                        }
+                        callSendAPI(senderPSID, response)
+                        callSendAPI(senderPSID, image)
+                        setTimeout( () => callSendAPI(senderPSID, greeting), 3000)
+                        } else {
+                            console.error("err1")
+                        }
+                })
+                setTimeout(() => callSendAPI(senderPSID, quickReply), 10000)
+                break;
+            case 'Random food fact':
+                request({
+                    "uri": "https://api.spoonacular.com/food/trivia/random",
+                    "qs": {
+                        "apiKey": process.env.API_KEY,
+                    }
+                },(req, res, body) => {
+                    if(!err) {
+                        const fact = { text : JSON.parse(res.body).text }
+                        callSendAPI(senderPSID, fact)
+                    } else {
+                        console.log("error getting fact")
+                    }       
+                })
+                setTimeout(() => callSendAPI(senderPSID, quickReply), 10000)
+                break;
+            case 'Random food joke':
+                request({
+                    "uri": "https://api.spoonacular.com/food/jokes/random",
+                    "qs": {
+                        "apiKey": process.env.API_KEY,
+                    }
+                },(req, res, body) => {
+                    if(!err) {
+                        const joke = { text : JSON.parse(res.body).text }
+                        callSendAPI(senderPSID, joke)
+                    } else {
+                        console.log("error getting joke")
+                    }    
+                })
+                setTimeout(() => callSendAPI(senderPSID, quickReply), 10000)
+                break;
+            
             default:
                 callSendAPI(senderPSID, processing)
                 request({
