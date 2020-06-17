@@ -26,7 +26,6 @@ app.get('/webhook', (req, res) => {
 
 app.post('/webhook', (req, res) => {
     let body = req.body;
-    let senderName;
     if (body.object === 'page') {
       body.entry.forEach(function(entry) {
         let webhook_event = entry.messaging[0];
@@ -39,7 +38,6 @@ app.post('/webhook', (req, res) => {
           },
           "method": "get"
         }, (err, res, body) => {
-          console.log(res.body)
           senderPSID.firstName = JSON.parse(res.body).first_name
         })
         if (webhook_event.message) {

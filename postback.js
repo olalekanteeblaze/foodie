@@ -6,8 +6,12 @@ module.exports = function handlePostback(senderPSID, receivedPB) {
 
     switch(payload){
         case 'get started':
+            const greeting = {
+                text: `Hi ${senderPSID.firstName}!, My name is Foodie. I'm a seasoned chef and know how to cook a lot of foods. You can get the recipe of a food by telling me the name or showing me a picture. I also tell food fact and some jokes that people find really funny because they are not.`
+            }
+            callSendAPI(senderPSID, greeting)
             response = {
-                text: `Hi ${senderPSID.first_name} Get recipe using:`,
+                text: `Get recipe using:`,
                 quick_replies: [
                     {
                         content_type: "text",
