@@ -7,7 +7,7 @@ module.exports = function handlePostback(senderPSID, receivedPB) {
     switch(payload){
         case 'get started':
             response = {
-                text: "Get recipe using:",
+                text: "Hi {{first_name}}, Get recipe using:",
                 quick_replies: [
                     {
                         content_type: "text",
