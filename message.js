@@ -4,6 +4,7 @@ const callSendAPI = require('./sendAPI')
 module.exports = function handleMessage(senderPSID, receivedMessage) {
     let response
     let message = receivedMessage.text
+    console.log(senderPSID)
     let attachment = receivedMessage && receivedMessage.attachments && receivedMessage.attachments[0]
     let processing = {
         text: "Preparing your recipe..."
