@@ -121,7 +121,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                         console.log("error getting fact")
                     }       
                 })
-                setTimeout(() => callSendAPI(senderPSID, quickReply), 10000)
+                setTimeout(() => callSendAPI(senderPSID, quickReply), 3000)
                 break;
             case 'Random food joke':
                 request({
@@ -129,7 +129,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                     "qs": {
                         "apiKey": process.env.API_KEY,
                     }
-                },(req, res, body) => {
+                },(err, res, body) => {
                     if(!err) {
                         const joke = { text : JSON.parse(res.body).text }
                         callSendAPI(senderPSID, joke)
@@ -137,7 +137,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                         console.log("error getting joke")
                     }    
                 })
-                setTimeout(() => callSendAPI(senderPSID, quickReply), 10000)
+                setTimeout(() => callSendAPI(senderPSID, quickReply), 3000)
                 break;
             
             default:
