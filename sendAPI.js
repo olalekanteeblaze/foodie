@@ -3,7 +3,7 @@ const request = require('request')
 module.exports = function callSendAPI(senderPSID, response) {
     let request_body = {
         "recipient": {
-          "id": senderPSID
+          "id": senderPSID.id
         },
         "messaging_type": "RESPONSE",
         "message": response
