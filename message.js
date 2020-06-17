@@ -171,7 +171,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                                     text: extendedIngredients
                                 }
                                 callSendAPI(senderPSID, ingredientText)
-                                response = {
+                                const response = {
                                     text: JSON.parse(res.body).instructions,
                                 }
                                 const image = {
