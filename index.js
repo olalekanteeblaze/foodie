@@ -40,11 +40,12 @@ app.post('/webhook', (req, res) => {
           "method": "get"
         }, (err, res, body) => {
           senderPSID.firstName = JSON.parse(res.body).first_name
-          console.log(senderPSID)
         })
         if (webhook_event.message) {
+        console.log(senderPSID)
         handleMessage(senderPSID, webhook_event.message);        
         } else if (webhook_event.postback) {
+        console.log(senderPSID)
         handlePostback(senderPSID, webhook_event.postback);
         } 
  
