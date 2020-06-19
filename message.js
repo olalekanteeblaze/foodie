@@ -63,7 +63,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 }
                 callSendAPI(senderPSID, response)
                 break;
-            case 'get a random Recipe':
+            case 'get a random recipe':
                 request({
                     "uri": `https://api.spoonacular.com/recipes/random`,
                     "qs": {
