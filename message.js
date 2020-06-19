@@ -74,11 +74,11 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 },(err, res, body) => {
                     if(!err) { 
                         console.log(res.body)
-                        let extendedIngredients = 'These are the needed ingredients'
+                        let extendedIngredients = `These are the needed ingredients`
                         const ingredients = JSON.parse(res.body).recipes[0].extendedIngredients
                         ingredients.forEach((ingredient) => {
                             extendedIngredients += `
-${ingredient.original}`
+                            ${ingredient.original}`
                         })
                         const ingredientText = {
                             text: extendedIngredients
@@ -163,7 +163,7 @@ ${ingredient.original}`
                             "method": "get"
                         },(err, res, body) => {
                             if(!err) { 
-                                let extendedIngredients = 'These are the needed ingredients'
+                                let extendedIngredients = `These are the needed ingredients`
                                 const ingredients = JSON.parse(res.body).extendedIngredients
                                 ingredients.forEach((ingredient) => {
                                     extendedIngredients += `
@@ -241,7 +241,7 @@ ${ingredient.original}`
                                 "method": "get"
                             },(err, res, body) => {
                                 if(!err) { 
-                                    let extendedIngredients = 'These are the needed ingredients'
+                                    let extendedIngredients = `These are the needed ingredients`
                                     const ingredients = JSON.parse(res.body).extendedIngredients
                                     ingredients.forEach((ingredient) => {
                                         extendedIngredients += `
