@@ -51,12 +51,12 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                     quick_replies: [
                         {
                             content_type: "text",
-                            title: "Name of Food",
+                            title: "Name of food",
                             payload: "NAME_OF_FOOD",
                         },
                         {
                             content_type: "text",
-                            title: "Picture of Food",
+                            title: "Picture of food",
                             payload: "PICTURE",
                         }
                     ]
