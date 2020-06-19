@@ -24,7 +24,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
             },
             {
                 content_type: "text",
-                title: "get a random food fact",
+                title: "tell me a food fact",
                 payload: "Random_fact"
                 
             },
@@ -108,7 +108,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 })
                 setTimeout(() => callSendAPI(senderPSID, quickReply), 10000)
                 break;
-            case 'get a random food fact':
+            case 'tell me a food fact':
                 request({
                     "uri": "https://api.spoonacular.com/food/trivia/random",
                     "qs": {
