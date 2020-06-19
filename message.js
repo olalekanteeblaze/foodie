@@ -14,23 +14,23 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
         quick_replies: [
             {
                 content_type: "text",
-                title: "another recipe",
+                title: "get another recipe",
                 payload: "NAME_OF_FOOD",
             },
             {
                 content_type: "text",
-                title: "Random Recipe",
+                title: "get a random recipe",
                 payload: "Random_recipe"
             },
             {
                 content_type: "text",
-                title: "Random food fact",
+                title: "get a random food fact",
                 payload: "Random_fact"
                 
             },
             {
                 content_type: "text",
-                title: "Random food joke",
+                title: "tell me a joke",
                 payload: "Random_joke"
                 
             }
@@ -39,13 +39,13 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
     console.log(message)
     if(message) {
         switch(message) {
-            case 'Name of Food':
+            case 'Name of food':
                 callSendAPI(senderPSID, { text: 'What are you cooking?. Let me teach you how.'})
                 break;
-            case 'Picture of Food':
+            case 'Picture of food':
                 callSendAPI(senderPSID, { text: 'Send the picture, maybe i can help you...'})
                 break;
-            case 'another recipe':
+            case 'get another recipe':
                 const response = {
                     text: "Get recipe using:",
                     quick_replies: [
@@ -63,7 +63,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 }
                 callSendAPI(senderPSID, response)
                 break;
-            case 'Random Recipe':
+            case 'get a random Recipe':
                 request({
                     "uri": `https://api.spoonacular.com/recipes/random`,
                     "qs": {
@@ -108,7 +108,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 })
                 setTimeout(() => callSendAPI(senderPSID, quickReply), 10000)
                 break;
-            case 'Random food fact':
+            case 'get a random food fact':
                 request({
                     "uri": "https://api.spoonacular.com/food/trivia/random",
                     "qs": {
@@ -124,7 +124,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                 })
                 setTimeout(() => callSendAPI(senderPSID, quickReply), 3000)
                 break;
-            case 'Random food joke':
+            case 'tell me a joke':
                 request({
                     "uri": "https://api.spoonacular.com/food/jokes/random",
                     "qs": {
