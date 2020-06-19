@@ -166,7 +166,8 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                                 let extendedIngredients = 'These are the needed ingredients'
                                 const ingredients = JSON.parse(res.body).extendedIngredients
                                 ingredients.forEach((ingredient) => {
-                                    extendedIngredients += `${ingredient.original}
+                                    extendedIngredients += `
+                                    ${ingredient.original}
                                     `
                                 })
                                 const ingredientText = {
@@ -243,7 +244,8 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                                     let extendedIngredients = 'These are the needed ingredients'
                                     const ingredients = JSON.parse(res.body).extendedIngredients
                                     ingredients.forEach((ingredient) => {
-                                        extendedIngredients += `${ingredient.original}
+                                        extendedIngredients += `
+                                        ${ingredient.original}
                                         `
                                     })
                                     const ingredientText = {
