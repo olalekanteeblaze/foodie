@@ -241,7 +241,7 @@ module.exports = function handleMessage(senderPSID, receivedMessage) {
                                 "method": "get"
                             },(err, res, body) => {
                                 if(!err) { 
-                                    let extendedIngredients = `These are the needed ingredients`
+                                    let extendedIngredients = 'These are the needed ingredients'
                                     const ingredients = JSON.parse(res.body).extendedIngredients
                                     ingredients.forEach((ingredient) => {
                                         extendedIngredients += `
